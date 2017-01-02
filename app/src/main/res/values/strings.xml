@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="No_internet_connection">No internet connection</string>
+    <string name="my_cities">My Cities </string>
+    <string name="check_internet">Check internet connection and reopen the app</string>
+    <string name="details">Details</string>
+    <string name="temperature">Temperature</string>
+    <string name="feels_like">Feels like</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="cloud">Cloud</string>
+    <string name="visibility">Visibility</string>
+    <string name="humidity">Humidity</string>
+    <string name="morning">Morning</string>
+    <string name="afternoon">Afternoon</string>
+    <string name="evening">Evening</string>
+    <string name="night">Night</string>
+
+    <string name="forecast_swipe">One week weather forecast ( swipe from right to left )</string>
+    <string name="forecast">One week weather forecast</string>
+
+</resources>

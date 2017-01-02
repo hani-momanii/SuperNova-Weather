@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/current_weather_parent_layout"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    android:layout_height="wrap_content"
+    android:gravity="left|bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|bottom"
+        android:orientation="vertical">
+
+        <hani.weather.customviews.TextViewFont
+            android:id="@+id/current_description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:paddingBottom="7dp"
+            android:paddingLeft="10dp"
+            android:shadowColor="#000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:text="--"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/text_white"
+            android:textSize="20sp" />
+
+
+        <hani.weather.customviews.TextViewFont
+            android:id="@+id/current_temperature_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:includeFontPadding="false"
+            android:paddingBottom="7dp"
+            android:paddingLeft="10dp"
+            android:shadowColor="#000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:text="--"
+            android:textColor="@android:color/white"
+            android:textSize="150sp" />
+    </LinearLayout>
+</RelativeLayout>
