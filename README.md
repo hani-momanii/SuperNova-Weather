@@ -55,6 +55,11 @@ All the icons used on the app is from [Material Icon Generator](https://github.c
 [![alt text][6.1]][6]
 
 
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
+[6.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
+
+
 [1]: https://twitter.com/hani_momanii
 [2]: https://www.facebook.com/hani.momanii
 [6]: https://github.com/hani-momanii
