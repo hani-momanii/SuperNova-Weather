@@ -11,5 +11,5 @@ import hani.weather.models.Weather;
 public interface WeatherForecastCallback {
     void onWeatherForecastLoadedSusses(CurrentConditionResponse currentCondition, Weather weather);
 
-    void onWeatherForecastLoadedFailed(int errorCode);
+    void onWeatherForecastLoadedFailed(String errorCode);
 }

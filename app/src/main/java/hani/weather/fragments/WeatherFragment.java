@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -211,9 +212,9 @@ public class WeatherFragment extends Fragment implements WeatherForecastCallback
                         float scrollY = (itemsScrollView.getScrollY() / (float) 10.0);
                         float blurredImageAlpha = scrollY / SCROLL_VIEW_INITIAL_OFFSET;
 
-                        if (blurredImageAlpha > 0.5) {
+                        if (blurredImageAlpha > 0.8) {
 
-                            blurredImageAlpha = (float) 0.5;
+                            blurredImageAlpha = (float) 0.8;
                         }
                         try {
                             final float finalBlurredImageAlpha = blurredImageAlpha;
@@ -285,13 +286,16 @@ public class WeatherFragment extends Fragment implements WeatherForecastCallback
     }
 
     @Override
-    public void onWeatherForecastLoadedFailed(int errorCode) {
-        swipeRefreshLayout.setRefreshing(false);
-
-        List<Weather> temp = DatabaseController.with(getActivity().getApplication()).getWeather(city);
-        weather = temp.get(temp.size() - 1);
-        isOffline = true;
-        setViewsValues();
+    public void onWeatherForecastLoadedFailed(String errorCode) {
+        try {
+            swipeRefreshLayout.setRefreshing(false);
+            List<Weather> temp = DatabaseController.with(getActivity().getApplication()).getWeather(city);
+            weather = temp.get(temp.size() - 1);
+            isOffline = true;
+            setViewsValues();
+        } catch (Exception ex) {
+            Toast.makeText(getContext(), errorCode, Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -337,16 +341,16 @@ public class WeatherFragment extends Fragment implements WeatherForecastCallback
 
     @Override
     public void onRefresh() {
-        if(Utility.checkInternetConnection(getContext())) {
+        if (Utility.checkInternetConnection(getContext())) {
             swipeRefreshLayout.post(new Runnable() {
                                         @Override
                                         public void run() {
                                             swipeRefreshLayout.setRefreshing(true);
-                                                ApiHelper.getInstance(getActivity().getApplication()).getWeatherForecast(city, weatherCallback);
+                                            ApiHelper.getInstance(getActivity().getApplication()).getWeatherForecast(city, weatherCallback);
                                         }
                                     }
             );
-        }else{
+        } else {
             swipeRefreshLayout.setRefreshing(false);
         }
     }

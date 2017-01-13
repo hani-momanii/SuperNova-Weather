@@ -30,10 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         error_text = (TextView) findViewById(R.id.error_text);
-
         checkFirstRun();
-
-
     }
 
 

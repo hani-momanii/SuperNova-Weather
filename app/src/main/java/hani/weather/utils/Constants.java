@@ -6,7 +6,7 @@ package hani.weather.utils;
 public class Constants {
     public static final String DATA_BASE_NAME = "weathertest.realm";
     public static final String BASE_URL = "http://api.worldweatheronline.com/premium/v1/";
-    public static final String API_KEY = "d8e5ab57076c4016bf3105524160209";
+    public static final String API_KEY = "2e36453529854723a7d140157171301";
     public static final String IS_FIRST_RUN = "firstrun";
     public static final String API_RESPONSE_JSON_FORMAT = "json";
     public static final String LANGUAGE = "en";

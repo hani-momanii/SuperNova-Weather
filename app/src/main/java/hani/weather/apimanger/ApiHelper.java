@@ -3,6 +3,8 @@ package hani.weather.apimanger;
 import android.app.Application;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +126,11 @@ public class ApiHelper {
         call.enqueue(new Callback<WeatherApiResponse>() {
             @Override
             public void onResponse(Call<WeatherApiResponse> call, Response<WeatherApiResponse> response) {
+                if (response.errorBody() != null && !TextUtils.isEmpty(response.errorBody().toString())) {
+                    callback.onWeatherForecastLoadedFailed(response.errorBody().toString());
+                    return;
+                }
+
                 if (response.isSuccessful() || response.body().getData().getCurrentCondition().size() > 1 || response.body().getData().getWeather().size() > 1) {
                     Weather weather = new Weather();
                     weather.setCity(city);
@@ -135,13 +142,12 @@ public class ApiHelper {
                     DatabaseController.with((Application) context).addWeather(weather);
                     callback.onWeatherForecastLoadedSusses(currentConditionResponse, weather);
                 } else {
-                    callback.onWeatherForecastLoadedFailed(response.code());
+                    callback.onWeatherForecastLoadedFailed(String.valueOf(response.code()));
                 }
             }
 
             @Override
             public void onFailure(Call<WeatherApiResponse> call, Throwable t) {
-                callback.onWeatherForecastLoadedFailed(-1);
             }
         });
     }
